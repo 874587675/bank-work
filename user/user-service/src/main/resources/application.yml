@@ -1,3 +1,70 @@
 server:
   port: 8081
+  servlet:
+    context-path: /
+    encoding:
+      force: true
+spring:
+  jackson:
+    time-zone: GMT+8
+  application:
+    name: bank-user-service
+# spring-cloud
+  cloud:
+    nacos:
+      discovery:
+        server-addr: 172.25.146.24:8848
+    alibaba:
+      seata:
+        tx-service-group: my_test_tx_group
+  # 数据源配置
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://192.168.146.10:3306/bank_user?useSSL=false&serverTimezone=UTC
+    username: root
+    password: 123456
+# redis配置
+  redis:
+    host: 192.168.146.10
+    port: 6379
+# rabbitmq配置
+  rabbitmq:
+    host: 192.168.146.10
+    port: 5672
+    username: admin
+    password: 123456
+  
+# mybatis配置
+mybatis:
+  mapper-locations: classpath:mapper/**/*.xml
+  configuration:
+    map-underscore-to-camel-case: true
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
 
+#seata:
+#  enabled: true
+#  application-id: seata-server
+#  tx-service-group: my_test_tx_group
+#  enable-auto-data-source-proxy: true
+#  service:
+#    enable-degrade: false
+#    disable-global-transaction: false
+#    vgroupMapping:
+#      my_test_tx_group: default
+#  registry:
+#    type: nacos
+#    nacos:
+#      server-addr: 192.168.146.10:8848
+#      namespace:
+#      group: SEATA_GROUP
+#      username: nacos
+#      password: nacos
+#      cluster: default
+#  config:
+#    type: nacos
+#    nacos:
+#      server-addr: 192.168.146.10:8848
+#      namespace:
+#      group: SEATA_GROUP
+#      username: nacos
+#      password: nacos

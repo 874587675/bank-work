@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.cc.mapper.UserMapper">
+    
+<!--    查询用户基本信息-->
+    <resultMap id="UsersResult" type="com.cc.vo.UserVo">
+        <id column="id" property="id"/>
+        <result column="username" property="username"/>
+        <result column="name" property="name"/>
+        <result column="phone" property="phone"/>
+        <result column="user_type" property="userType"/>
+        <result column="create_time" property="createTime"/>
+        <result column="update_time" property="updateTime"/>
+        <result column="status" property="status"/>
+        <result column="deleted" property="deleted"/>
+    </resultMap>
+    
+    <select id="selectUsers" resultMap="UsersResult">
+        select id, username, name, phone, user_type, create_time, update_time, status, deleted from user
+        <where>
+            <if test="id!=null and id != ''">
+                and id = #{id}
+            </if>
+        </where>
+    </select>
+</mapper>
