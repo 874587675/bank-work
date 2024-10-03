@@ -1,0 +1,51 @@
+server:
+  port: 10086
+  
+spring:
+  application:
+    name: bank-gateway-service
+#    配置中心要求
+  profiles:
+    active: dev
+  cloud:
+    nacos:
+      discovery:
+        server-addr: 172.25.146.24:8848
+      config:
+        server-addr: 172.25.146.24:8848
+        file-extension: yaml
+#       group: DEFAULT_GROUP
+#   sentinel:
+#     transport:
+#       dashboard: localhost:8858
+#      配置CORS跨域资源共享
+    gateway:
+      globalcors:
+        cors-configurations:
+          '[/**]': # 匹配所有请求路径
+            allowedOrigins: # 允许跨域的域名
+              - "http://admin.tpp.local"
+              - "http://www.tpp.local"
+            allowedMethods: # 允许的请求方法
+              - GET
+              - POST
+              - PUT
+              - DELETE
+              - OPTIONS
+            allowedHeaders: # 允许的请求头
+              - "*"
+        #   allowCredentials: true
+        #   maxAge: 3600
+        #防止预检请求被拦截
+        add-to-simple-url-handler-mapping: true
+        
+      routes:
+        - id: user
+          uri: lb://bank-user-service
+          predicates:
+            # 匹配路径需要以/goods/开头
+            - Path=/user/**
+#          filters:
+#            # 截取掉路径最前的n段
+#            - StripPrefix=2
+        
