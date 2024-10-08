@@ -15,12 +15,10 @@ public interface UserMoneyFeign {
     List<UserMoneyVo> getUsersMoney(@RequestParam("userId") Integer userId);
 
     // 修改用户余额
-    @ResponseBody
     @PostMapping("/user/setUsersMoney")
     AjaxResult setUsersMoney(@RequestBody UserMoneyVo userMoneyVo);
 
     // 新增用户余额
-    @ResponseBody
     @PostMapping("/user/insertUsersMoney")
     AjaxResult insertUsersMoney(@RequestBody UserMoneyVo userMoneyVo);
 

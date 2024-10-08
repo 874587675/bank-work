@@ -34,8 +34,8 @@ public class UserPayServiceImpl implements UserPayService {
     @Override
     @GlobalTransactional
     public Integer insertTransferRecord(TransferRecordVo transferRecordVo) {
-        System.out.println(transferRecordVo);
         List<UserMoneyVo> usersMoney = userMoneyFeign.getUsersMoney(transferRecordVo.getSenderId());
+        List<UserMoneyVo> rusersMoney = userMoneyFeign.getUsersMoney(transferRecordVo.getReceiverId());
         UserVo r = new UserVo();
         r.setId(transferRecordVo.getSenderId());
         List<UserVo> rusersVo = userMoneyFeign.selectUser(r);
@@ -60,7 +60,7 @@ public class UserPayServiceImpl implements UserPayService {
                 //转入
                 UserMoneyVo receiver = new UserMoneyVo();
                 receiver.setUserId(transferRecordVo.getReceiverId());
-                receiver.setUserMoney(usersMoney.get(0).getUserMoney().add(transferRecordVo.getAmount()));
+                receiver.setUserMoney(rusersMoney.get(0).getUserMoney().add(transferRecordVo.getAmount()));
                 userMoneyFeign.setUsersMoney(receiver);
 
                 //插入存款记录

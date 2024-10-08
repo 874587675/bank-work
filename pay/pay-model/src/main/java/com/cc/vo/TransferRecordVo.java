@@ -3,6 +3,9 @@ package com.cc.vo;
 import com.cc.pojo.TransferRecord;
 import lombok.Data;
 
+import java.math.BigDecimal;
+import java.util.Date;
+
 /**
  * @program:
  * @ClassName:

@@ -5,7 +5,7 @@
 <mapper namespace="com.cc.mapper.UserPayMapper">
 
     <insert id="insertTransferRecord">
-        insert into transfer_record( sender_id, receiver_id, amount, create_time, status)
-        values (#{senderId}, #{receiverId}, #{amount}, NOW(),#{status})
+        insert into transfer_record(sender_id,receiver_id,amount,create_time)
+        values (#{senderId}, #{receiverId}, #{amount}, '2007-12-15 23:50:26')
     </insert>
 </mapper>

@@ -11,12 +11,12 @@
       <el-form-item label="收款用户编号" prop="receiverId">
         <el-input type="text" v-model="ruleForm.receiverId" autocomplete="请输入要转账的用户编号" ></el-input>
       </el-form-item>
-      <el-form-item label="姓名" prop="name">
-        <el-input type="text" v-model="ruleForm.name" autocomplete="请输入要转账的用户姓名"></el-input>
-      </el-form-item>
-      <el-form-item label="手机号" prop="phone">
-        <el-input type="text" v-model="ruleForm.phone" autocomplete="请输入要转账的手机号"></el-input>
-      </el-form-item>
+<!--      <el-form-item label="姓名" prop="name">-->
+<!--        <el-input type="text" v-model="ruleForm.name" autocomplete="请输入要转账的用户姓名"></el-input>-->
+<!--      </el-form-item>-->
+<!--      <el-form-item label="手机号" prop="phone">-->
+<!--        <el-input type="text" v-model="ruleForm.phone" autocomplete="请输入要转账的手机号"></el-input>-->
+<!--      </el-form-item>-->
       <el-form-item label="转账金额" prop="amount">
         <el-input type="text" v-model="ruleForm.amount" autocomplete="请输入要转账的金额"></el-input>
       </el-form-item>
@@ -43,8 +43,8 @@ export default {
       ruleForm: {
         senderId: localStorage.getItem("userId"),
         receiverId: '',
-        name: '',
-        phone: '',
+        // name: '',
+        // phone: '',
         amount: '',
       },
 
@@ -53,14 +53,14 @@ export default {
           {required: true, message: '请输入用户编号', trigger: 'blur'},
           {min: 1, max: 15, message: '用户编号长度在 1 到 15 个字符', trigger: 'blur'},
         ],
-        name: [
-          {required: true, message: '请输入姓名', trigger: 'blur'},
-          {min: 3, max: 5, message: '姓名长度在 3 到 5 个字符', trigger: 'blur'},
-        ],
-        phone: [
-          {required: true, message: '请输入手机号', trigger: 'blur'},
-          {min: 11, max: 11, message: '手机号长度11个字符', trigger: 'blur'},
-        ],
+        // name: [
+        //   {required: true, message: '请输入姓名', trigger: 'blur'},
+        //   {min: 3, max: 5, message: '姓名长度在 3 到 5 个字符', trigger: 'blur'},
+        // ],
+        // phone: [
+        //   {required: true, message: '请输入手机号', trigger: 'blur'},
+        //   {min: 11, max: 11, message: '手机号长度11个字符', trigger: 'blur'},
+        // ],
         amount: [
           {required: true, message: '请输入转账金额', trigger: 'blur'},
         ],
