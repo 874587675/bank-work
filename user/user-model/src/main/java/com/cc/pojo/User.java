@@ -3,6 +3,7 @@ package com.cc.pojo;
 import java.io.Serializable;
 import java.util.Date;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -44,27 +45,24 @@ public class User implements Serializable {
     /**
      * 创建时间
      */
+    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
     private Date createTime;
 
     /**
      * 更新时间
      */
+    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
     private Date updateTime;
 
     /**
      * 用户状态
      */
-    private String status;
+    private Byte status;
 
     /**
      * 是否已删除
      */
-    private byte[] deleted;
-
-    /**
-     * 密码盐值
-     */
-    private String salt;
+    private Byte deleted;
 
     private static final long serialVersionUID = 1L;
 }

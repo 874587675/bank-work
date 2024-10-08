@@ -19,6 +19,12 @@
     <file url="file://$PROJECT_DIR$/common/src/main/resources" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/gateway/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/gateway/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/pay/pay-model/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/pay/pay-model/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/pay/pay-service/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/pay/pay-service/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/pay/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/pay/src/main/resources" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/src/main/resources" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/user/src/main/java" charset="UTF-8" />

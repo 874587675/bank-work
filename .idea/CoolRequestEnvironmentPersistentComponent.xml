@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="CoolRequestEnvironmentPersistentComponent">
-    <option name="environments" value="[{&quot;environmentName&quot;:&quot;user&quot;,&quot;hostAddress&quot;:&quot;http://localhost:10086/user/**&quot;,&quot;id&quot;:&quot;ee11cbb19052e40b07aac0ca060c23ee&quot;,&quot;header&quot;:[],&quot;urlParam&quot;:[],&quot;formData&quot;:[],&quot;formUrlencoded&quot;:[]}]" />
+    <option name="environments" value="[{&quot;environmentName&quot;:&quot;user&quot;,&quot;hostAddress&quot;:&quot;http://localhost:10086/user/**&quot;,&quot;id&quot;:&quot;ee11cbb19052e40b07aac0ca060c23ee&quot;,&quot;header&quot;:[],&quot;urlParam&quot;:[],&quot;formData&quot;:[],&quot;formUrlencoded&quot;:[]},{&quot;environmentName&quot;:&quot;pay&quot;,&quot;hostAddress&quot;:&quot;http://localhost:10086/pay/**&quot;,&quot;id&quot;:&quot;b02a45a596bfb86fe2578bde75ff5444&quot;,&quot;header&quot;:[],&quot;urlParam&quot;:[],&quot;formData&quot;:[],&quot;formUrlencoded&quot;:[]},{&quot;environmentName&quot;:&quot;money&quot;,&quot;hostAddress&quot;:&quot;http://localhost:10086/api/money/**&quot;,&quot;id&quot;:&quot;9726255eec083aa56dc0449a21b33190&quot;,&quot;header&quot;:[],&quot;urlParam&quot;:[],&quot;formData&quot;:[],&quot;formUrlencoded&quot;:[]}]" />
   </component>
 </project>

@@ -1,7 +1,10 @@
 server:
   port: 10086
-  
+
 spring:
+  jackson:
+    time-zone: GMT+8
+    date-format: yyyy-MM-dd HH:mm:ss
   application:
     name: bank-gateway-service
 #    配置中心要求
@@ -20,32 +23,35 @@ spring:
 #       dashboard: localhost:8858
 #      配置CORS跨域资源共享
     gateway:
-      globalcors:
-        cors-configurations:
-          '[/**]': # 匹配所有请求路径
-            allowedOrigins: # 允许跨域的域名
-              - "http://admin.tpp.local"
-              - "http://www.tpp.local"
-            allowedMethods: # 允许的请求方法
-              - GET
-              - POST
-              - PUT
-              - DELETE
-              - OPTIONS
-            allowedHeaders: # 允许的请求头
-              - "*"
-        #   allowCredentials: true
-        #   maxAge: 3600
-        #防止预检请求被拦截
-        add-to-simple-url-handler-mapping: true
-        
+      globalcors: # 全局的跨域处理
+        add-to-simple-url-handler-mapping: true # 解决options请求被拦截问题
+        corsConfigurations:
+          '[/**]':
+            allowedOrigins: # 允许哪些网站的跨域请求
+              - "http://admin.bank.work"
+              - "http://api.bank.work"
+            allowedMethods: # 允许的跨域ajax的请求方式
+              - "GET"
+              - "POST"
+              - "DELETE"
+              - "PUT"
+              - "OPTIONS"
+            allowedHeaders: "*" # 允许在请求中携带的头信息
+            allowCredentials: true # 是否允许携带cookie
+            maxAge: 360000 # 这次跨域检测的有效期
       routes:
-        - id: user
-          uri: lb://bank-user-service
-          predicates:
-            # 匹配路径需要以/goods/开头
-            - Path=/user/**
-#          filters:
-#            # 截取掉路径最前的n段
-#            - StripPrefix=2
-        
+      - id: user
+        uri: lb://bank-user-service
+        predicates:
+            # 匹配路径需要以/user/开头
+        - Path=/api/user/**
+        filters:
+           # 截取掉路径最前的n段
+        - StripPrefix=1
+      - id: pay
+        uri: lb://bank-pay-service
+        predicates:
+        - Path=/api/pay/**
+        filters:
+        - StripPrefix=1
+

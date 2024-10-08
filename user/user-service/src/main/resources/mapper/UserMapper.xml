@@ -3,8 +3,7 @@
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.cc.mapper.UserMapper">
-    
-<!--    查询用户基本信息-->
+    <!--    查询用户基本信息-->
     <resultMap id="UsersResult" type="com.cc.vo.UserVo">
         <id column="id" property="id"/>
         <result column="username" property="username"/>
@@ -16,13 +15,81 @@
         <result column="status" property="status"/>
         <result column="deleted" property="deleted"/>
     </resultMap>
-    
+
     <select id="selectUsers" resultMap="UsersResult">
-        select id, username, name, phone, user_type, create_time, update_time, status, deleted from user
+        select id,
+               username,
+               name,
+               phone,
+               user_type,
+               create_time,
+               update_time,
+               status,
+               deleted
+        from user
         <where>
-            <if test="id!=null and id != ''">
+            <if test="username != null and username != ''">
+                and username = #{username}
+            </if>
+            <if test="password != null and password != ''">
+                and password = #{password}
+            </if>
+            <if test="id != null and id != ''">
                 and id = #{id}
             </if>
+            and deleted = 0
         </where>
     </select>
+    <!--    新增用户-->
+    <insert id="insertUser" useGeneratedKeys="true" keyProperty="id">
+        insert into user(username, password, name, phone, user_type, create_time, update_time, status, deleted)
+        values (#{username}, #{password}, #{name}, #{phone}, #{userType}, NOW(), NOW(), #{status}, #{deleted})
+    </insert>
+    <!--    修改用户-->
+    <update id="updateUser">
+        update user
+        <set>
+            <trim prefix="" suffix="" suffixOverrides=",">
+                <if test="username != null and username != ''">
+                    username = #{username},
+                </if>
+                <if test="password != null and password != ''">
+                    password = #{password},
+                </if>
+                <if test="name != null and name != ''">
+                    name = #{name},
+                </if>
+                <if test="phone != null and phone != ''">
+                    phone = #{phone},
+                </if>
+                <if test="updateTime != null">
+                    update_time = #{updateTime},
+                </if>
+                <if test="status != null">
+                    status = #{status},
+                </if>
+                <if test="deleted != null">
+                    deleted = #{deleted},
+                </if>
+            </trim>
+        </set>
+        <where>
+            and id = #{id}
+        </where>
+    </update>
+
+    <!--    逻辑删除用户-->
+    <update id="deleteUser">
+        update user
+        <set>
+            <trim prefix="" suffix="" suffixOverrides=",">
+                <if test="deleted != null">
+                    deleted = #{deleted},
+                </if>
+            </trim>
+        </set>
+        <where>
+            and id = #{id}
+        </where>
+    </update>
 </mapper>

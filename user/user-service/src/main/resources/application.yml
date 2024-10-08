@@ -7,6 +7,7 @@ server:
 spring:
   jackson:
     time-zone: GMT+8
+    date-format: yyyy-MM-dd HH:mm:ss
   application:
     name: bank-user-service
 # spring-cloud
@@ -33,7 +34,7 @@ spring:
     port: 5672
     username: admin
     password: 123456
-  
+
 # mybatis配置
 mybatis:
   mapper-locations: classpath:mapper/**/*.xml

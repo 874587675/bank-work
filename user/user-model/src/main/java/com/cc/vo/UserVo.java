@@ -15,4 +15,5 @@ import lombok.NoArgsConstructor;
  **/
 @Data
 public class UserVo extends User {
+
 }
