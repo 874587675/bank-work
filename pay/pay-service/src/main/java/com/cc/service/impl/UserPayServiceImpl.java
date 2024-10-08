@@ -47,10 +47,6 @@ public class UserPayServiceImpl implements UserPayService {
             s.setId(userId);
             List<UserVo> susersVo = userMoneyFeign.selectUser(s);
             Byte sstatus = susersVo.get(0).getStatus();
-            // 处理获取到的属性
-            System.out.println("User ID: " + userId);
-            System.out.println("Amount: " + userMoney);
-
             if (userMoney.compareTo(transferRecordVo.getAmount())>=0 && sstatus!=1){
                 //扣款
                 UserMoneyVo sender = new UserMoneyVo();
@@ -62,9 +58,9 @@ public class UserPayServiceImpl implements UserPayService {
                 receiver.setUserId(transferRecordVo.getReceiverId());
                 receiver.setUserMoney(rusersMoney.get(0).getUserMoney().add(transferRecordVo.getAmount()));
                 userMoneyFeign.setUsersMoney(receiver);
-
                 //插入存款记录
-                return userPayMapper.insertTransferRecord(transferRecordVo);
+                userPayMapper.insertTransferRecord(transferRecordVo);
+                return 1;
             }
         } else {
             // 处理错误或空数据的情况

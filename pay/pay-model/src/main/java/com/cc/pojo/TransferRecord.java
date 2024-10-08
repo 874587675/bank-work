@@ -3,9 +3,6 @@ package com.cc.pojo;
 import java.io.Serializable;
 import java.math.BigDecimal;
 import java.util.Date;
-import java.util.regex.Pattern;
-
-import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -37,7 +34,6 @@ public class TransferRecord implements Serializable {
     /**
      *
      */
-    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
     private Date createTime;
 
     /**

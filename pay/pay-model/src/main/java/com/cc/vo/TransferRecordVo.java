@@ -16,7 +16,4 @@ import java.util.Date;
  **/
 @Data
 public class TransferRecordVo extends TransferRecord {
-    public String name;
-    public String phone;
-
 }

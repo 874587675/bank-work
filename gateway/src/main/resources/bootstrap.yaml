@@ -4,7 +4,6 @@ server:
 spring:
   jackson:
     time-zone: GMT+8
-    date-format: yyyy-MM-dd HH:mm:ss
   application:
     name: bank-gateway-service
 #    配置中心要求

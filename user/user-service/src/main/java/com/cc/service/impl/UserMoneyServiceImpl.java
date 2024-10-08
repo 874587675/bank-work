@@ -5,6 +5,7 @@ import com.cc.service.UserMoneyService;
 import com.cc.vo.UserMoneyVo;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
@@ -27,11 +28,13 @@ public class UserMoneyServiceImpl implements UserMoneyService{
     }
 
     @Override
+    @Transactional
     public Integer setUsersMoney(UserMoneyVo userMoneyVo) {
         return userMoneyMapper.setUsersMoney(userMoneyVo);
     }
 
     @Override
+    @Transactional
     public Integer insertUsersMoney(UserMoneyVo userMoneyVo) {
         return userMoneyMapper.insertUsersMoney(userMoneyVo);
     }
